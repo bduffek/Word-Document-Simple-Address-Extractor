@@ -1,6 +1,6 @@
 Attribute VB_Name = "mAddressTool"
 Option Explicit
-
+'References Microsoft Word Object Library
 Sub PullAddresses()
     Dim wbNew As Workbook
     Dim wsNew As Worksheet
