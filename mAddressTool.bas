@@ -15,7 +15,8 @@ Sub PullAddresses()
     Dim wordApp As Word.Application
     Set wordApp = New Word.Application
     
-    GetDocumentReference wordApp, docToRead, "Please select a Microsoft Word document to read.", strInitialPath:=ControlSheet.Range("InitialFolder")
+    'An initial path can be put here for example:strInitialPath:=ControlSheet.Range("InitialFolder")
+    GetDocumentReference wordApp, docToRead, "Please select a Microsoft Word document to read." 
 
     ReadWordDocumentAddressesToSheet docToRead, wsNew
     
@@ -31,14 +32,12 @@ Sub PullAddresses()
         .Range("A1:G1").Borders(xlEdgeBottom).LineStyle = xlContinuous
         .Rows.AutoFit
         .Columns.AutoFit
-        .Columns(1).NumberFormat = "General"
+        .Columns(1).NumberFormat = "General" 'To allow boolean TRUE/FALSE.  Note these are "True" and "False" in a mail merge.
         .Name = "Addresses"
     End With
-    
 End Sub
 
-
-'For opening other Excel Workbooks
+'For opening a Word Document and assigning a reference to it
 Sub GetDocumentReference(ByRef msWordApp As Word.Application, ByRef docRefToSet As Document, strTitle As String, _
                          Optional strInitialPath As String)
     'Setting initial path if none was specified
